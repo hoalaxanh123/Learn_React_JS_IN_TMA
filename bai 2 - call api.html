@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learn ReactJS</title>
+    <style>
+        body {
+            height: 100vh;
+            font-weight: bold;
+            color: white;
+            font-size: 25px;
+        }
+
+        .header,
+        .footer,
+        .content,
+        .sidebar,
+        .advert {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .header,
+        .footer {
+            height: 60px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100% - 140px);
+            margin: 5px 0 5px 0;
+        }
+
+        .header {
+            background-color: #20CDEA;
+        }
+
+        .sidebar {
+            background-color: #FBBF24;
+        }
+
+        .advert {
+            margin-top: 5px;
+            background-color: lightseagreen;
+        }
+
+        .content {
+            background-color: yellowgreen;
+        }
+
+        .footer {
+            background-color: #A78BFA;
+        }
+
+        .left {
+            height: 100%;
+            width: 20%;
+        }
+
+        .left>.sidebar,
+        .advert {
+            height: calc(50% - 2.5px);
+        }
+
+        .content {
+            margin-left: 5px;
+            height: 100%;
+            width: 80%;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header class="header">Header</header>
+    <div class="container">
+        <div class="left">
+            <div class="sidebar">SideBar</div>
+            <div class="advert">Advert</div>
+        </div>
+        <div class="content">Content</div>
+    </div>
+    <footer class="footer">Footer</footer>
+
+</body>
+<script>
+    const GET_COLOR_API='https://simple-web-service-with-node.herokuapp.com/colors/random'
+    const sentApiToGetColor=()=> {
+            return fetch(GET_COLOR_API)
+            .then(res => res.json())
+            .catch((err) => {
+                console.log('Can not get color because  :>> ', err);
+            })
+        }
+    window.addEventListener('click', ((e) => {
+        console.log('e :>> ', e);
+        if (e.target && ['div', 'footer', 'header'].includes(e.target.localName) && e.target.className!='container') {
+            sentApiToGetColor().then((json)=> e.target.style.backgroundColor =json.result)
+        }
+    }))
+</script>
+
+</html>
