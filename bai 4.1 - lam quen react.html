@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .hello{
+        border: 1px solid black;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        background: linear-gradient(to right, red , yellow);
+        color: rgb(43, 43, 27);
+    }
+    .number{
+        color:rgb(103, 255, 2);
+        font-style: initial;
+        font-size: 45px;
+    }
+</style>
+<script>
+    const welcomeComponent=(how_many)=>{
+        document.getElementById('root').innerHTML=`<div class="hello">Hello, <label class="number">${how_many}</label> anh em</div>`
+        
+    }
+</script>
+<body>
+    <div id="root"></div>
+</body>
+<script>welcomeComponent(5010)</script>
+
+</html>
